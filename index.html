@@ -5,120 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>المساعد الطبي الذكي - احجز موعدك مع أفضل الأطباء</title>
     <meta name="description" content="منصة ذكية لحجز المواعيد الطبية مع أفضل الأطباء في 7 تخصصات مختلفة. خدمة متاحة 24/7 مع أكثر من 70 طبيب معتمد.">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #7c3aed 0%, #2563eb 50%, #7c3aed 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 2rem;
-        }
-        .logo {
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 2rem;
-            backdrop-filter: blur(10px);
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        .btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            backdrop-filter: blur(10px);
-        }
-        .btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-top: 3rem;
-        }
-        .feature {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-        .feature h3 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.1rem;
-        }
-        .feature p {
-            margin: 0;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            p { font-size: 1rem; }
-            .container { padding: 1rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z"/>
-            </svg>
-        </div>
-        
-        <h1>المساعد الطبي الذكي</h1>
-        <p>احجز موعدك مع أفضل الأطباء في مصر</p>
-        
-        <a href="#" class="btn" onclick="alert('الموقع قيد التطوير - سيتم تفعيله قريباً!')">ابدأ الآن</a>
-        
-        <div class="features">
-            <div class="feature">
-                <h3>7 تخصصات</h3>
-                <p>أمراض القلب، مخ وأعصاب، جلدية، أنف وأذن، باطنة، نساء وتوليد، أطفال</p>
+    <!-- الصفحة الرئيسية -->
+    <div id="homePage" class="page active">
+        <div class="container">
+            <!-- Header -->
+            <div class="header">
+                <div class="title-section">
+                    <h1>المساعد الطبي الذكي</h1>
+                    <div class="version-badge">v0</div>
+                </div>
+                <p class="subtitle">احجز موعدك مع أفضل الأطباء</p>
             </div>
-            <div class="feature">
-                <h3>70 طبيب</h3>
-                <p>أطباء معتمدون من منصة فيزيتا مع تقييمات عالية</p>
+
+            <!-- Logo -->
+            <div class="logo-section">
+                <div class="logo">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z"/>
+                    </svg>
+                </div>
             </div>
-            <div class="feature">
-                <h3>حجز فوري</h3>
-                <p>احجز موعدك في دقائق معدودة مع إمكانية الاختيار</p>
+
+            <!-- Welcome Message -->
+            <div class="welcome-section">
+                <h2>مرحباً بك في المساعد الطبي</h2>
+                <p>أخبرني عن الأعراض التي تعاني منها وسأساعدك في العثور على الطبيب المناسب<br>وحجز موعد</p>
             </div>
-        </div>
-        
-        <div style="margin-top: 3rem; font-size: 0.9rem; opacity: 0.7;">
-            <p>🩺 المساعد الطبي الذكي - جميع الأطباء معتمدون ومتاحون على منصة فيزيتا</p>
+
+            <!-- Symptoms Examples -->
+            <div class="symptoms-section">
+                <h3>أمثلة على الأعراض:</h3>
+                <div class="symptoms-grid" id="symptomsGrid">
+                    <!-- سيتم ملؤها بـ JavaScript -->
+                </div>
+            </div>
+
+            <!-- Input Section -->
+            <div class="input-section">
+                <div class="input-container">
+                    <input type="text" id="symptomInput" placeholder="اكتب الأعراض التي تعاني منها...">
+                    <button id="startChatBtn" class="send-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22,2 15,22 11,13 2,9"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="features-section">
+                <div class="feature">
+                    <div class="feature-icon">❤️</div>
+                    <h3>7 تخصصات طبية</h3>
+                    <p>أمراض القلب، مخ وأعصاب، جلدية، أنف وأذن، باطنة، نساء وتوليد، أطفال</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">👥</div>
+                    <h3>70 طبيب معتمد</h3>
+                    <p>أطباء معتمدون من منصة فيزيتا مع تقييمات عالية</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📅</div>
+                    <h3>حجز فوري</h3>
+                    <p>احجز موعدك في دقائق معدودة مع إمكانية الاختيار</p>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p>🩺 المساعد الطبي الذكي - احجز موعدك مع أفضل الأطباء في مصر</p>
+                <p class="footer-small">جميع الأطباء معتمدون ومتاحون على منصة فيزيتا</p>
+            </div>
         </div>
     </div>
+
+    <!-- صفحة المحادثة -->
+    <div id="chatPage" class="page">
+        <!-- Chat Header -->
+        <div class="chat-header">
+            <div class="chat-header-content">
+                <div class="chat-header-info">
+                    <div class="chat-logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1>المساعد الطبي الذكي</h1>
+                        <p>احجز موعدك مع أفضل الأطباء</p>
+                    </div>
+                </div>
+                <button id="backToHomeBtn" class="back-btn">العودة للرئيسية</button>
+            </div>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="chat-container">
+            <div class="chat-card">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- الرسائل ستظهر هنا -->
+                </div>
+                
+                <!-- Chat Input -->
+                <div class="chat-input-section">
+                    <div class="chat-input-container">
+                        <input type="text" id="chatInput" placeholder="اكتب الأعراض التي تعاني منها...">
+                        <button id="sendMessageBtn" class="send-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22,2 15,22 11,13 2,9"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="medical-data.js"></script>
+    <script src="chatbot.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
