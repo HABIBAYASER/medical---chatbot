@@ -42,15 +42,62 @@
             <div class="symptoms-section">
                 <h3>أمثلة على الأعراض:</h3>
                 <div class="symptoms-grid" id="symptomsGrid">
-                    <!-- سيتم ملؤها بـ JavaScript -->
+                    <div class="symptom-card" onclick="startChat('ألم في الصدر')">
+                        <span class="symptom-icon">❤️</span>
+                        <p>ألم في الصدر</p>
+                    </div>
+                    <div class="symptom-card" onclick="startChat('صداع شديد')">
+                        <span class="symptom-icon">🧠</span>
+                        <p>صداع شديد</p>
+                    </div>
+                    <div class="symptom-card" onclick="startChat('ألم في الأذن')">
+                        <span class="symptom-icon">👂</span>
+                        <p>ألم في الأذن</p>
+                    </div>
+                    <div class="symptom-card" onclick="startChat('حكة في الجلد')">
+                        <span class="symptom-icon">✋</span>
+                        <p>حكة في الجلد</p>
+                    </div>
+                    <div class="symptom-card" onclick="startChat('حمى عند الطفل')">
+                        <span class="symptom-icon">👶</span>
+                        <p>حمى عند الطفل</p>
+                    </div>
+                    <div class="symptom-card" onclick="startChat('ألم في البطن')">
+                        <span class="symptom-icon">⭕</span>
+                        <p>ألم في البطن</p>
+                    </div>
+                    <div class="symptom-card" onclick="startChat('تأخر الدورة الشهرية')">
+                        <span class="symptom-icon">📅</span>
+                        <p>تأخر الدورة الشهرية</p>
+                    </div>
+                    <div class="symptom-card" onclick="startChat('إفرازات مهبلية')">
+                        <span class="symptom-icon">💧</span>
+                        <p>إفرازات مهبلية</p>
+                    </div>
+                    <div class="symptom-card" onclick="startChat('ألم أثناء الدورة')">
+                        <span class="symptom-icon">👥</span>
+                        <p>ألم أثناء الدورة</p>
+                    </div>
+                    <div class="symptom-card" onclick="startChat('أعراض الحمل')">
+                        <span class="symptom-icon">⚠️</span>
+                        <p>أعراض الحمل</p>
+                    </div>
+                    <div class="symptom-card" onclick="startChat('نزيف مهبلي')">
+                        <span class="symptom-icon">💧</span>
+                        <p>نزيف مهبلي</p>
+                    </div>
+                    <div class="symptom-card" onclick="startChat('ألم في الحوض')">
+                        <span class="symptom-icon">⭕</span>
+                        <p>ألم في الحوض</p>
+                    </div>
                 </div>
             </div>
 
             <!-- Input Section -->
             <div class="input-section">
                 <div class="input-container">
-                    <input type="text" id="symptomInput" placeholder="اكتب الأعراض التي تعاني منها...">
-                    <button id="startChatBtn" class="send-btn">
+                    <input type="text" id="symptomInput" placeholder="اكتب الأعراض التي تعاني منها..." onkeypress="handleMainInputKeypress(event)">
+                    <button id="startChatBtn" class="send-btn" onclick="handleStartChat()">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="22" y1="2" x2="11" y2="13"></line>
                             <polygon points="22,2 15,22 11,13 2,9"></polygon>
@@ -102,7 +149,7 @@
                         <p>احجز موعدك مع أفضل الأطباء</p>
                     </div>
                 </div>
-                <button id="backToHomeBtn" class="back-btn">العودة للرئيسية</button>
+                <button id="backToHomeBtn" class="back-btn" onclick="showHomePage()">العودة للرئيسية</button>
             </div>
         </div>
 
@@ -116,8 +163,8 @@
                 <!-- Chat Input -->
                 <div class="chat-input-section">
                     <div class="chat-input-container">
-                        <input type="text" id="chatInput" placeholder="اكتب الأعراض التي تعاني منها...">
-                        <button id="sendMessageBtn" class="send-btn">
+                        <input type="text" id="chatInput" placeholder="اكتب الأعراض التي تعاني منها..." onkeypress="handleChatInputKeypress(event)">
+                        <button id="sendMessageBtn" class="send-btn" onclick="sendMessage()">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <line x1="22" y1="2" x2="11" y2="13"></line>
                                 <polygon points="22,2 15,22 11,13 2,9"></polygon>
@@ -129,8 +176,6 @@
         </div>
     </div>
 
-    <script src="medical-data.js"></script>
-    <script src="chatbot.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
