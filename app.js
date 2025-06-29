@@ -1,12 +1,8 @@
 // التطبيق الرئيسي
 let chatbot
 let isLoading = false
-const MedicalChatbot = require("./MedicalChatbot") // Declare or import the MedicalChatbot variable
-const SYMPTOM_EXAMPLES = [
-  { icon: "ปวดศีรษะ", text: "ปวดศีรษะ" },
-  { icon: "صداع", text: "صداع" },
-  { icon: "ไอ", text: "ไอ" },
-] // Declare the SYMPTOM_EXAMPLES variable
+const MedicalChatbot = require("./MedicalChatbot") // Declare the MedicalChatbot variable
+const SYMPTOM_EXAMPLES = require("./SYMPTOM_EXAMPLES") // Declare the SYMPTOM_EXAMPLES variable
 
 // تهيئة التطبيق
 document.addEventListener("DOMContentLoaded", () => {
@@ -24,6 +20,7 @@ function initializeApp() {
 
 function createSymptomExamples() {
   const symptomsGrid = document.getElementById("symptomsGrid")
+  if (!symptomsGrid) return
 
   SYMPTOM_EXAMPLES.forEach((symptom) => {
     const symptomCard = document.createElement("div")
@@ -43,38 +40,53 @@ function createSymptomExamples() {
 
 function bindEvents() {
   // زر البدء في الصفحة الرئيسية
-  document.getElementById("startChatBtn").addEventListener("click", () => {
-    const input = document.getElementById("symptomInput").value.trim()
-    if (input) {
-      startChat(input)
-    }
-  })
+  const startBtn = document.getElementById("startChatBtn")
+  if (startBtn) {
+    startBtn.addEventListener("click", () => {
+      const input = document.getElementById("symptomInput")
+      if (input && input.value.trim()) {
+        startChat(input.value.trim())
+      }
+    })
+  }
 
   // Enter في حقل الإدخال الرئيسي
-  document.getElementById("symptomInput").addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      const input = e.target.value.trim()
-      if (input) {
-        startChat(input)
+  const symptomInput = document.getElementById("symptomInput")
+  if (symptomInput) {
+    symptomInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        const input = e.target.value.trim()
+        if (input) {
+          startChat(input)
+        }
       }
-    }
-  })
+    })
+  }
 
   // زر الإرسال في المحادثة
-  document.getElementById("sendMessageBtn").addEventListener("click", sendMessage)
+  const sendBtn = document.getElementById("sendMessageBtn")
+  if (sendBtn) {
+    sendBtn.addEventListener("click", sendMessage)
+  }
 
   // Enter في حقل المحادثة
-  document.getElementById("chatInput").addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      sendMessage()
-    }
-  })
+  const chatInput = document.getElementById("chatInput")
+  if (chatInput) {
+    chatInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        sendMessage()
+      }
+    })
+  }
 
   // زر العودة للرئيسية
-  document.getElementById("backToHomeBtn").addEventListener("click", () => {
-    showHomePage()
-    resetChat()
-  })
+  const backBtn = document.getElementById("backToHomeBtn")
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      showHomePage()
+      resetChat()
+    })
+  }
 }
 
 function startChat(symptom = "") {
@@ -88,15 +100,20 @@ function startChat(symptom = "") {
 
   // إذا كان هناك عرض محدد، أرسله
   if (symptom) {
-    document.getElementById("chatInput").value = symptom
-    setTimeout(() => {
-      sendMessage()
-    }, 500)
+    const chatInput = document.getElementById("chatInput")
+    if (chatInput) {
+      chatInput.value = symptom
+      setTimeout(() => {
+        sendMessage()
+      }, 500)
+    }
   }
 }
 
 async function sendMessage() {
   const input = document.getElementById("chatInput")
+  if (!input) return
+
   const message = input.value.trim()
 
   if (!message || isLoading) return
@@ -119,6 +136,7 @@ async function sendMessage() {
     const response = chatbot.processMessage(message)
     addMessage(response, true)
   } catch (error) {
+    console.error("Error:", error)
     addMessage("عذراً، حدث خطأ. يرجى المحاولة مرة أخرى.", true)
   } finally {
     isLoading = false
@@ -127,6 +145,8 @@ async function sendMessage() {
 
 function addMessage(text, isBot) {
   const messagesContainer = document.getElementById("chatMessages")
+  if (!messagesContainer) return
+
   const messageDiv = document.createElement("div")
   messageDiv.className = `message ${isBot ? "bot" : "user"}`
 
@@ -161,6 +181,8 @@ function formatMessageText(text) {
 
 function showTypingIndicator() {
   const messagesContainer = document.getElementById("chatMessages")
+  if (!messagesContainer) return
+
   const typingDiv = document.createElement("div")
   typingDiv.className = "typing-indicator"
   typingDiv.id = "typingIndicator"
@@ -187,23 +209,36 @@ function hideTypingIndicator() {
 
 function scrollToBottom() {
   const messagesContainer = document.getElementById("chatMessages")
-  messagesContainer.scrollTop = messagesContainer.scrollHeight
+  if (messagesContainer) {
+    messagesContainer.scrollTop = messagesContainer.scrollHeight
+  }
 }
 
 function showHomePage() {
-  document.getElementById("homePage").classList.add("active")
-  document.getElementById("chatPage").classList.remove("active")
+  const homePage = document.getElementById("homePage")
+  const chatPage = document.getElementById("chatPage")
+
+  if (homePage) homePage.classList.add("active")
+  if (chatPage) chatPage.classList.remove("active")
 }
 
 function showChatPage() {
-  document.getElementById("homePage").classList.remove("active")
-  document.getElementById("chatPage").classList.add("active")
+  const homePage = document.getElementById("homePage")
+  const chatPage = document.getElementById("chatPage")
+
+  if (homePage) homePage.classList.remove("active")
+  if (chatPage) chatPage.classList.add("active")
 }
 
 function resetChat() {
-  document.getElementById("chatMessages").innerHTML = ""
-  document.getElementById("chatInput").value = ""
-  document.getElementById("symptomInput").value = ""
-  chatbot.reset()
+  const messagesContainer = document.getElementById("chatMessages")
+  const chatInput = document.getElementById("chatInput")
+  const symptomInput = document.getElementById("symptomInput")
+
+  if (messagesContainer) messagesContainer.innerHTML = ""
+  if (chatInput) chatInput.value = ""
+  if (symptomInput) symptomInput.value = ""
+
+  if (chatbot) chatbot.reset()
   isLoading = false
 }
